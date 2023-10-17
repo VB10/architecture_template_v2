@@ -1,15 +1,15 @@
 {
     "home": {
-        "title": "Ana Sayfa"
+        "title": "Home Page"
     },
     "general": {
         "button": {
-            "save": "Kaydet {}"
+            "save": "Save {}"
         },
         "dialog": {
             "version": {
-                "title": "Versiyon",
-                "content": "Versiyon bilgisi"
+                "title": "Version",
+                "content": "Version info"
             }
         }
     }
