@@ -22,6 +22,7 @@ dependencies:
   flutter_riverpod: ^2.4.4
   json_annotation: ^4.8.1
   envied: ^0.3.0+3
+  easy_localization: ^3.0.3
 
   widgets:
     path: module/widgets
@@ -57,6 +58,5 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - asset/translations/
