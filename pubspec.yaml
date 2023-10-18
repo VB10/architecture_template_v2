@@ -24,6 +24,10 @@ dependencies:
   envied: ^0.3.0+3
   easy_localization: ^3.0.3
 
+  #Utility
+  easy_logger: ^0.0.2
+  logger: ^2.0.2+1
+
   widgets:
     path: module/widgets
 
