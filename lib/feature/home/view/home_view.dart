@@ -5,6 +5,7 @@ import 'package:architecture_template_v2/product/init/product_localization.dart'
 import 'package:architecture_template_v2/product/utility/constans/enums/locales.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
 
 part 'widget/home_app_bar.dart';
 
@@ -37,7 +38,7 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin {
             },
             child: Text(
               LocaleKeys.general_button_save,
-              style: Theme.of(context).textTheme.titleLarge,
+              style: context.general.textTheme.bodySmall,
             ).tr(
               args: ['Veli'],
             ),
