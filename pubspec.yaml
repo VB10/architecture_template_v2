@@ -31,6 +31,9 @@ dependencies:
   kartal: ^3.4.4
   google_fonts: ^6.1.0
 
+  #Navigation
+  auto_route: ^7.8.4
+
   widgets:
     path: module/widgets
 
@@ -42,6 +45,8 @@ dev_dependencies:
     sdk: flutter
   very_good_analysis: ^5.1.0
   flutter_launcher_icons: ^0.13.1
+  auto_route_generator: ^7.3.2
+  build_runner: ^2.4.6
 
 flutter_launcher_icons:
   android: "launcher_icon"
