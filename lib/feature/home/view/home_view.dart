@@ -1,13 +1,8 @@
 import 'package:architecture_template_v2/feature/home/view/mixin/home_view_mixin.dart';
-import 'package:architecture_template_v2/product/init/config/app_environment.dart';
-import 'package:architecture_template_v2/product/init/language/locale_keys.g.dart';
-import 'package:architecture_template_v2/product/navigation/app_router.dart';
-import 'package:architecture_template_v2/product/widget/project_network_image.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:gen/gen.dart';
 import 'package:kartal/kartal.dart';
+import 'package:widgets/widgets.dart';
 
 part 'widget/home_app_bar.dart';
 
@@ -23,42 +18,52 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          SuccessDialog.show(title: 'title', context: context);
+        },
+      ),
       appBar: const _HomeAppBar(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Assets.icons.icLove.svg(
-          //   package: 'gen',
-          // ),
-
-          const ProjectNetworkImage(
-            url: 'https://picsum.photos/250?image=9',
-          ),
-          Assets.lottie.animZombie.lottie(
-            package: 'gen',
-          ),
-          Assets.images.imgFlags.image(
-            package: 'gen',
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text(AppEnvironmentItems.baseUrl.value),
-          ),
-          const Text('Change language'),
-          ElevatedButton(
-            onPressed: () async {
-              final response =
-                  await context.router.push<bool?>(HomeDetailRoute(id: '1'));
-            },
-            child: Text(
-              LocaleKeys.general_button_save,
-              style: context.general.textTheme.bodySmall,
-            ).tr(
-              args: ['Veli'],
+          AdaptAllView(
+            phone: Text(
+              ''.ext.version,
+              style: context.general.textTheme.titleLarge,
+            ),
+            tablet: Text(
+              ''.ext.version,
+              style: context.general.textTheme.bodyLarge,
+            ),
+            desktop: Text(
+              ''.ext.version,
+              style: context.general.textTheme.headlineLarge,
             ),
           ),
+          Text(
+            'veli',
+            style: context.general.textTheme.titleLarge?.copyWith(
+              color: 'FFF0001 '.ext.color,
+            ),
+          ),
+          Expanded(
+            child: Image.network(
+              'https://picsum.photos/500/500',
+            ),
+          ),
+          const Expanded(child: Placeholder()),
         ],
       ),
     );
   }
+
+  void calcuateUser(List<String> items) {}
+}
+
+class User {
+  User({required this.name, required this.money});
+
+  final String? name;
+  final double? money;
 }

@@ -28,7 +28,7 @@ dependencies:
   #Utility
   easy_logger: ^0.0.2
   logger: ^2.0.2+1
-  kartal: ^3.4.4
+  kartal: ^3.5.0
   google_fonts: ^6.1.0
 
   #Navigation
@@ -50,6 +50,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
   auto_route_generator: ^7.3.2
   build_runner: ^2.4.6
+  device_preview: ^1.1.0
 
 flutter_launcher_icons:
   android: "launcher_icon"
