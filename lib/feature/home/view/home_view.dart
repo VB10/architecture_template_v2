@@ -2,6 +2,7 @@ import 'package:architecture_template_v2/feature/home/view/mixin/home_view_mixin
 import 'package:architecture_template_v2/product/widget/padding/project_padding.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:gen/gen.dart';
 import 'package:kartal/kartal.dart';
 import 'package:widgets/widgets.dart';
 
@@ -16,12 +17,15 @@ final class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> with HomeViewMixin {
+  List<User> _users = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          SuccessDialog.show(title: 'title', context: context);
+        onPressed: () async {
+          _users = await loginService.users();
+          setState(() {});
+          // SuccessDialog.show(title: 'title', context: context);
         },
       ),
       appBar: const _HomeAppBar(),
@@ -56,7 +60,17 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin {
               'https://picsum.photos/500/500',
             ),
           ),
-          const Expanded(child: Placeholder()),
+          Expanded(
+            child: ListView.builder(
+              itemCount: _users.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  title: Text(_users[index].userId.toString()),
+                  subtitle: Text(_users[index].body.toString()),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
@@ -65,9 +79,9 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin {
   void calcuateUser(List<String> items) {}
 }
 
-class User {
-  User({required this.name, required this.money});
+// class User {
+//   User({required this.name, required this.money});
 
-  final String? name;
-  final double? money;
-}
+//   final String? name;
+//   final double? money;
+// }
