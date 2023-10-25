@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:architecture_template_v2/product/init/application_initialize.dart';
 import 'package:architecture_template_v2/product/init/product_localization.dart';
 import 'package:architecture_template_v2/product/init/state_initialize.dart';
