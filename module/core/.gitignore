@@ -10,6 +10,9 @@
 .svn/
 migrate_working_dir/
 
+*.dylib
+
+test/hive/
 # IntelliJ related
 *.iml
 *.ipr
