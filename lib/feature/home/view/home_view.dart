@@ -1,9 +1,11 @@
 import 'package:architecture_template_v2/feature/home/view/mixin/home_view_mixin.dart';
-import 'package:architecture_template_v2/product/widget/padding/project_padding.dart';
+import 'package:architecture_template_v2/feature/home/view_model/home_view_model.dart';
+import 'package:architecture_template_v2/feature/home/view_model/state/home_state.dart';
+import 'package:architecture_template_v2/product/state/base/base_state.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:kartal/kartal.dart';
-import 'package:widgets/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gen/gen.dart';
 
 part 'widget/home_app_bar.dart';
 
@@ -15,59 +17,58 @@ final class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> with HomeViewMixin {
+class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          SuccessDialog.show(title: 'title', context: context);
-        },
-      ),
-      appBar: const _HomeAppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const ProjectPadding.allNormal(),
-            child: AdaptAllView(
-              phone: Text(
-                ''.ext.version,
-                style: context.general.textTheme.titleLarge,
-              ),
-              tablet: Text(
-                ''.ext.version,
-                style: context.general.textTheme.bodyLarge,
-              ),
-              desktop: Text(
-                ''.ext.version,
-                style: context.general.textTheme.headlineLarge,
-              ),
+    return BlocProvider(
+      create: (context) => homeViewModel,
+      child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () async {
+            productViewModel.changeThemeMode(ThemeMode.dark);
+            await homeViewModel.fetchUsers();
+          },
+        ),
+        appBar: const _HomeAppBar(),
+        body: const Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: _UserList(),
             ),
-          ),
-          Text(
-            'veli',
-            style: context.general.textTheme.titleLarge?.copyWith(
-              color: 'FFF0001 '.ext.color,
-            ),
-          ),
-          Expanded(
-            child: Image.network(
-              'https://picsum.photos/500/500',
-            ),
-          ),
-          const Expanded(child: Placeholder()),
-        ],
+          ],
+        ),
       ),
     );
   }
-
-  void calcuateUser(List<String> items) {}
 }
 
-class User {
-  User({required this.name, required this.money});
+final class _UserList extends StatelessWidget {
+  const _UserList();
 
-  final String? name;
-  final double? money;
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<HomeViewModel, HomeState>(
+      listener: (context, state) {
+        print(state.users);
+      },
+      child: BlocSelector<HomeViewModel, HomeState, List<User>>(
+        selector: (state) {
+          return state.users ?? [];
+        },
+        builder: (context, state) {
+          if (state.isEmpty) return const SizedBox.shrink();
+          return ListView.builder(
+            itemCount: state.length,
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(
+                title: Text(state[index].userId.toString()),
+                subtitle: Text(state[index].body.toString()),
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
 }
