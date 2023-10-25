@@ -4,6 +4,7 @@ import 'package:architecture_template_v2/product/service/interface/authenction_o
 import 'package:architecture_template_v2/product/state/base/base_cubit.dart';
 import 'package:architecture_template_v2/product/state/container/index.dart';
 import 'package:gen/gen.dart';
+import 'package:kartal/kartal.dart';
 
 /// Manage your home view business logic
 final class HomeViewModel extends BaseCubit<HomeState> {
@@ -21,6 +22,7 @@ final class HomeViewModel extends BaseCubit<HomeState> {
 
   /// Get users
   Future<void> fetchUsers() async {
+    CustomLogger.showError<User>(_users);
     final response = await _authenticationOperationService.users();
     _saveItems(response);
     emit(state.copyWith(users: response));
