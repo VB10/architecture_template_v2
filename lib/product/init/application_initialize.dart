@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:architecture_template_v2/product/init/config/app_environment.dart';
-import 'package:architecture_template_v2/product/state/container/product_state_container.dart';
+import 'package:architecture_template_v2/product/state/container/index.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_logger/easy_logger.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +42,7 @@ final class ApplicationInitialize {
 
     _productEnvironmentWithContainer();
 
+    await ProductStateItems.productCache.init();
     // Depedency initialize
     // envied
   }
