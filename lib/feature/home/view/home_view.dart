@@ -56,12 +56,16 @@ final class _UserList extends StatelessWidget {
         },
         builder: (context, state) {
           if (state.isEmpty) return const SizedBox.shrink();
+
           return ListView.builder(
             itemCount: state.length,
             itemBuilder: (BuildContext context, int index) {
+              final user = state[index];
               return ListTile(
-                title: Text(state[index].userId.toString()),
-                subtitle: Text(state[index].body.toString()),
+                title: Text(user.userId.toString()),
+                // todo: trailing: Text(user.title ?? ''),
+                trailing: Text(user.body?[0] ?? ''),
+                subtitle: Text(user.body.toString()),
               );
             },
           );

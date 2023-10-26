@@ -47,6 +47,8 @@ dependencies:
     path: module/core
 
 dev_dependencies:
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
   very_good_analysis: ^5.1.0
@@ -56,6 +58,7 @@ dev_dependencies:
   device_preview: ^1.1.0
   mockito: ^5.4.2
   bloc_test: ^9.1.4
+  patrol: ^2.3.1
 
 flutter_launcher_icons:
   android: "launcher_icon"
