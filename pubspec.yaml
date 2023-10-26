@@ -54,6 +54,8 @@ dev_dependencies:
   auto_route_generator: ^7.3.2
   build_runner: ^2.4.6
   device_preview: ^1.1.0
+  mockito: ^5.4.2
+  bloc_test: ^9.1.4
 
 flutter_launcher_icons:
   android: "launcher_icon"
