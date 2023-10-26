@@ -1,12 +1,17 @@
-part of '../home_view.dart';
+import 'package:architecture_template_v2/feature/home/view_model/home_view_model.dart';
+import 'package:architecture_template_v2/feature/home/view_model/state/home_state.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const _HomeAppBar();
+class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const HomeAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      actions: const [_Loading()],
+      actions: const [
+        _Loading(),
+      ],
     );
   }
 
