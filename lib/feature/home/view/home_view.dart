@@ -1,4 +1,6 @@
 import 'package:architecture_template_v2/feature/home/view/mixin/home_view_mixin.dart';
+import 'package:architecture_template_v2/feature/home/view/widget/home_app_bar.dart';
+import 'package:architecture_template_v2/feature/home/view/widget/home_user_list.dart';
 import 'package:architecture_template_v2/feature/home/view_model/home_view_model.dart';
 import 'package:architecture_template_v2/feature/home/view_model/state/home_state.dart';
 import 'package:architecture_template_v2/product/state/base/base_state.dart';
@@ -6,8 +8,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gen/gen.dart';
-
-part 'widget/home_app_bar.dart';
 
 @RoutePage()
 final class HomeView extends StatefulWidget {
@@ -29,12 +29,12 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
             await homeViewModel.fetchUsers();
           },
         ),
-        appBar: const _HomeAppBar(),
+        appBar: const HomeAppBar(),
         body: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-              child: _UserList(),
+              child: _UserBlocList(),
             ),
           ],
         ),
@@ -43,8 +43,8 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
   }
 }
 
-final class _UserList extends StatelessWidget {
-  const _UserList();
+final class _UserBlocList extends StatelessWidget {
+  const _UserBlocList();
 
   @override
   Widget build(BuildContext context) {
@@ -57,18 +57,7 @@ final class _UserList extends StatelessWidget {
         builder: (context, state) {
           if (state.isEmpty) return const SizedBox.shrink();
 
-          return ListView.builder(
-            itemCount: state.length,
-            itemBuilder: (BuildContext context, int index) {
-              final user = state[index];
-              return ListTile(
-                title: Text(user.userId.toString()),
-                // todo: trailing: Text(user.title ?? ''),
-                trailing: Text(user.body?[0] ?? ''),
-                subtitle: Text(user.body.toString()),
-              );
-            },
-          );
+          return HomeUserList(users: state);
         },
       ),
     );
