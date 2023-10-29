@@ -23,7 +23,8 @@ Eğer fikir olarak sorunuz varsa lütfen birebir yerine bu repo üzerinden açı
 # 100. Yılımız Kutlu olsun!
 Ve tabi bu içeriği oluşturuken içimde olan bir Cumhuriyet ve onun kurucusu Mustafa Kemal Atatürk var. O bizlere bir gençliğe bana sana görmeden bir devlet bir cumhuriyet özgürce çalışma kod yazma imkanı bıraktı. Başta paşam olmak üzere onun silah arkadaşlarına sonsuz minnetimi ve bilmesini isterim ki Atam, gençlerin asla senin bıraktığın Cumhuriyeti sahipsiz bırakmayacak!
 
-<img width="319" alt="F9jixltXEAA4pP9" src="https://github.com/VB10/architecture_template_v2/assets/17102578/884c1f50-f66a-4f52-8ef4-e2b3df16b9b8">
+
+<img src="https://github.com/VB10/architecture_template_v2/assets/17102578/87ab24c7-b887-46e9-bc45-729cdd51cd2b" alt="drawing" width="80%"/>
 
 ---
 
