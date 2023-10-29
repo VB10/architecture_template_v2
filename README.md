@@ -1,3 +1,6 @@
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/vb10)
+
 # architecture_template_v2
 
 "Flutter Architecture Template v2" tüm bilgi ve mimari bakışıyla yayında! Teknik detayların hepsi [Wiki](https://github.com/VB10/architecture_template_v2/wiki) burada yer alıyor. Şimdiden izleyen yazan okuyan herkese başarılar diliyorum. Kodlarınız bol feature'larınız eksiksiz olsun.
@@ -19,9 +22,11 @@ Böyle bir seriyi ikinci ve güncel versiyonu ile yaparken tek isteğim bu serin
 ## Sorular ve Öneriler
 Eğer fikir olarak sorunuz varsa lütfen birebir yerine bu repo üzerinden açıp hatta benim dışımda arkadaşlra tartışalım. Bir tartışma kanalı aktif olacak. Öneri noktasında her zaman pr açığım. Severek okur devamında ekler teşekkürümü ederim.
 
-# 100. Yılımıaz Kutlu olsun!
+# 100. Yılımız Kutlu olsun!
 Ve tabi bu içeriği oluşturuken içimde olan bir Cumhuriyet ve onun kurucusu Mustafa Kemal Atatürk var. O bizlere bir gençliğe bana sana görmeden bir devlet bir cumhuriyet özgürce çalışma kod yazma imkanı bıraktı. Başta paşam olmak üzere onun silah arkadaşlarına sonsuz minnetimi ve bilmesini isterim ki Atam, gençlerin asla senin bıraktığın Cumhuriyeti sahipsiz bırakmayacak!
 
 <img width="319" alt="F9jixltXEAA4pP9" src="https://github.com/VB10/architecture_template_v2/assets/17102578/884c1f50-f66a-4f52-8ef4-e2b3df16b9b8">
+
+
 
 
