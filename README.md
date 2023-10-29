@@ -25,11 +25,15 @@ Ve tabi bu içeriği oluşturuken içimde olan bir Cumhuriyet ve onun kurucusu M
 
 <img width="319" alt="F9jixltXEAA4pP9" src="https://github.com/VB10/architecture_template_v2/assets/17102578/884c1f50-f66a-4f52-8ef4-e2b3df16b9b8">
 
+---
 
 
-## Sosyal Hesaplar:
-
+## Destek
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/vb10)
+
+- Kanaldan takip edip paylaşmak dahi benim için yeterli olacaktır.
+
+## Sosyal Hesaplar
 
 - [YouTube Kanalı - HardwareAndro](https://www.youtube.com/c/HardwareAndro)
 - [Twitter - @10VBacik](https://twitter.com/10VBacik)
