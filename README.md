@@ -1,6 +1,3 @@
-
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/vb10)
-
 # architecture_template_v2
 
 "Flutter Architecture Template v2" tüm bilgi ve mimari bakışıyla yayında! Teknik detayların hepsi [Wiki](https://github.com/VB10/architecture_template_v2/wiki) burada yer alıyor. Şimdiden izleyen yazan okuyan herkese başarılar diliyorum. Kodlarınız bol feature'larınız eksiksiz olsun.
@@ -19,7 +16,8 @@ Böyle bir seriyi ikinci ve güncel versiyonu ile yaparken tek isteğim bu serin
 | [![Unit test, Integration Test, Widget Test](https://img.youtube.com/vi/NBUyfAEmdj4/hqdefault.jpg) <br> Unit test, Integration Test, Widget Test](https://youtu.be/NBUyfAEmdj4) | [![Pigeon, Fastlane, App screenshot shot generator bilgilendirme](https://img.youtube.com/vi/Lg3YNowKYbs/hqdefault.jpg) <br> Pigeon, Fastlane, App screenshot shot generator bilgilendirme](https://youtu.be/Lg3YNowKYbs) |   |
 
 
-## Sorular ve Öneriler
+## Sorular ve Öneriler
+
 Eğer fikir olarak sorunuz varsa lütfen birebir yerine bu repo üzerinden açıp hatta benim dışımda arkadaşlra tartışalım. Bir tartışma kanalı aktif olacak. Öneri noktasında her zaman pr açığım. Severek okur devamında ekler teşekkürümü ederim.
 
 # 100. Yılımız Kutlu olsun!
@@ -28,5 +26,16 @@ Ve tabi bu içeriği oluşturuken içimde olan bir Cumhuriyet ve onun kurucusu M
 <img width="319" alt="F9jixltXEAA4pP9" src="https://github.com/VB10/architecture_template_v2/assets/17102578/884c1f50-f66a-4f52-8ef4-e2b3df16b9b8">
 
 
+
+## Sosyal Hesaplar:
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/vb10)
+
+- [YouTube Kanalı - HardwareAndro](https://www.youtube.com/c/HardwareAndro)
+- [Twitter - @10VBacik](https://twitter.com/10VBacik)
+- [LinkedIn - Veli Bacik](https://www.linkedin.com/in/veli-bacik-345978a9/)
+- [Medium - Veli Bacik](https://vbacik-10.medium.com)
+- [Kişisel Web Sitesi](https://vb10.dev/#/)
+- [Twitch - vbx10](https://www.twitch.tv/vbx10)
 
 
