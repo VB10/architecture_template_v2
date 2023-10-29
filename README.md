@@ -1,8 +1,11 @@
 # architecture_template_v2
 
-A new Flutter project.
+"Flutter Architecture Template v2" tüm bilgi ve mimari bakışıyla yayında! Teknik detayların hepsi [Wiki](https://github.com/VB10/architecture_template_v2/wiki) burada yer alıyor. Şimdiden izleyen yazan okuyan herkese başarılar diliyorum. Kodlarınız bol feature'larınız eksiksiz olsun.
 
-## Getting Started
+## Başlarken
+Böyle bir seriyi ikinci ve güncel versiyonu ile yaparken tek isteğim bu serinin daha çok insanlara ulaşması ve iyi bilgiyi birlikte büyütmemiz. Sizler bu bilgileri alıp kendi iş fikirlerinize kodlarınıza çevirdikçe ben daha çok mutlu olacağım ve biliyorum ki içinizden bilginin paylaşmasına inan arkadaşlar çıkıp benim gibi bir çok yen içerikler üretecikler.
+
+## İçerikler
 
 |   |   |   |
 |---|---|---|
@@ -11,4 +14,14 @@ A new Flutter project.
 | [![Auto route ile navigasyon, scriptler ve party paket ekleme](https://img.youtube.com/vi/hVbLQb8FErE/hqdefault.jpg) <br> Auto route ile navigasyon, scriptler ve party paket ekleme](https://youtu.be/hVbLQb8FErE) | [![Kartal paketi, Responsive kullanımı ve Özel widget tasarlama](https://img.youtube.com/vi/GizG5X3gfsQ/hqdefault.jpg) <br> Kartal paketi, Responsive kullanımı ve Özel widget tasarlama](https://youtu.be/GizG5X3gfsQ) | [![Stateless, Stateful ve Mixin Kullanımı](https://img.youtube.com/vi/4-rr5y5xyaI/hqdefault.jpg) <br> Stateless, Stateful ve Mixin Kullanımı](https://youtu.be/4-rr5y5xyaI) |
 | [![Network katmanı Vexana ile ve getIt ile bağımlılık yönetimi](https://img.youtube.com/vi/A-MbW_o3ILA/hqdefault.jpg) <br> Network katmanı Vexana ile ve getIt ile bağımlılık yönetimi](https://youtu.be/A-MbW_o3ILA) | [![BLoC ile State yönetimi](https://img.youtube.com/vi/tj5-EBrczxk/hqdefault.jpg) <br> BLoC ile State yönetimi](https://youtu.be/tj5-EBrczxk) | [![Cache işlemleri Hive](https://img.youtube.com/vi/td7d5UpufgQ/hqdefault.jpg) <br> Cache işlemleri Hive](https://youtu.be/td7d5UpufgQ) |
 | [![Unit test, Integration Test, Widget Test](https://img.youtube.com/vi/NBUyfAEmdj4/hqdefault.jpg) <br> Unit test, Integration Test, Widget Test](https://youtu.be/NBUyfAEmdj4) | [![Pigeon, Fastlane, App screenshot shot generator bilgilendirme](https://img.youtube.com/vi/Lg3YNowKYbs/hqdefault.jpg) <br> Pigeon, Fastlane, App screenshot shot generator bilgilendirme](https://youtu.be/Lg3YNowKYbs) |   |
+
+
+## Sorular ve Öneriler
+Eğer fikir olarak sorunuz varsa lütfen birebir yerine bu repo üzerinden açıp hatta benim dışımda arkadaşlra tartışalım. Bir tartışma kanalı aktif olacak. Öneri noktasında her zaman pr açığım. Severek okur devamında ekler teşekkürümü ederim.
+
+# 100. Yılımıaz Kutlu olsun!
+Ve tabi bu içeriği oluşturuken içimde olan bir Cumhuriyet ve onun kurucusu Mustafa Kemal Atatürk var. O bizlere bir gençliğe bana sana görmeden bir devlet bir cumhuriyet özgürce çalışma kod yazma imkanı bıraktı. Başta paşam olmak üzere onun silah arkadaşlarına sonsuz minnetimi ve bilmesini isterim ki Atam, gençlerin asla senin bıraktığın Cumhuriyeti sahipsiz bırakmayacak!
+
+<img width="319" alt="F9jixltXEAA4pP9" src="https://github.com/VB10/architecture_template_v2/assets/17102578/884c1f50-f66a-4f52-8ef4-e2b3df16b9b8">
+
 
