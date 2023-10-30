@@ -23,7 +23,7 @@ class AdapterInitializer implements ProductInit {
     PackageInfoInit(),
     LocalizationInit(),
     LoggerInit(),
-    AppInit(),
+    AppInit(testMode: isTest),
   ];
   @override
   FutureOr<void> init() async {
