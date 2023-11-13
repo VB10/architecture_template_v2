@@ -1,10 +1,24 @@
 #!/bin/bash
+# Run this script at the root
 
-flutter clean;  flutter pub get; rm pubspec.lock; cd ios; pod deintegrate; pod install; cd ..;
-cd module;
-cd gen; flutter clean; rm pubspec.lock;  flutter pub get; cd ..;
-cd widgets; flutter clean; rm pubspec.lock;  flutter pub get; cd ..;
-cd common; flutter clean; rm pubspec.lock;  flutter pub get; cd ..;
-cd core; flutter clean; rm pubspec.lock;  flutter pub get; cd ..;
-cd ..;
-flutter pub get;
+function clean_module {
+  local module="$1"
+  if [ -d "$module" ]; then
+    echo "Cleaning module: $module"
+    (cd "$module" && flutter clean && rm -f pubspec.lock && flutter pub get)
+  fi
+}
+
+cd module
+# Traverse all modules dynamically
+for module in */; do
+  clean_module "$module"
+done
+cd ..
+
+# Clean the main project
+echo "Cleaning main project"
+flutter clean && rm -f pubspec.lock && flutter pub get
+
+
+
