@@ -15,10 +15,10 @@ dependencies:
 
   #Core
   equatable: ^2.0.5
-  get_it: ^7.6.4
+  get_it: ^8.0.0
 
   #Network Dependencies
-  vexana: ^3.5.4
+  vexana: ^5.0.1
 
   #State
   flutter_bloc: ^8.1.3
@@ -29,11 +29,11 @@ dependencies:
   #Utility
   easy_logger: ^0.0.2
   logger: ^2.0.2+1
-  kartal: ^3.5.0
+  kartal: ^4.1.0
   google_fonts: ^6.1.0
 
   #Navigation
-  auto_route: ^7.8.4
+  auto_route: ^9.2.2
 
   widgets:
     path: module/widgets
@@ -51,14 +51,14 @@ dev_dependencies:
     sdk: flutter
   flutter_test:
     sdk: flutter
-  very_good_analysis: ^5.1.0
-  flutter_launcher_icons: ^0.13.1
-  auto_route_generator: ^7.3.2
+  very_good_analysis: ^6.0.0
+  flutter_launcher_icons: ^0.14.1
+  auto_route_generator: ^9.0.0
   build_runner: ^2.4.6
   device_preview: ^1.1.0
   mockito: ^5.4.2
   bloc_test: ^9.1.4
-  patrol: ^2.3.1
+  patrol: ^3.11.1
 
 flutter_launcher_icons:
   android: "launcher_icon"

@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:responsive_framework/breakpoint.dart';
-import 'package:responsive_framework/responsive_breakpoints.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 /// Custom responsive for project
 /// [MOBILE] 0 - 450

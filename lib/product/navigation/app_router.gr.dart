@@ -9,31 +9,6 @@
 
 part of 'app_router.dart';
 
-abstract class _$AppRouter extends RootStackRouter {
-  // ignore: unused_element
-  _$AppRouter({super.navigatorKey});
-
-  @override
-  final Map<String, PageFactory> pagesMap = {
-    HomeDetailRoute.name: (routeData) {
-      final args = routeData.argsAs<HomeDetailRouteArgs>();
-      return AutoRoutePage<bool?>(
-        routeData: routeData,
-        child: HomeDetailView(
-          id: args.id,
-          key: args.key,
-        ),
-      );
-    },
-    HomeRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const HomeView(),
-      );
-    },
-  };
-}
-
 /// generated route for
 /// [HomeDetailView]
 class HomeDetailRoute extends PageRouteInfo<HomeDetailRouteArgs> {
@@ -52,8 +27,16 @@ class HomeDetailRoute extends PageRouteInfo<HomeDetailRouteArgs> {
 
   static const String name = 'HomeDetailRoute';
 
-  static const PageInfo<HomeDetailRouteArgs> page =
-      PageInfo<HomeDetailRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<HomeDetailRouteArgs>();
+      return HomeDetailView(
+        id: args.id,
+        key: args.key,
+      );
+    },
+  );
 }
 
 class HomeDetailRouteArgs {
@@ -83,5 +66,10 @@ class HomeRoute extends PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const HomeView();
+    },
+  );
 }

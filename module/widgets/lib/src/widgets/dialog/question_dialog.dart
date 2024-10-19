@@ -45,7 +45,7 @@ class _QuestionDialogState extends State<QuestionDialog> {
       actions: [
         IconButton(
           onPressed: () {
-            if (_response.isEmpty) Navigator.of(context).pop(null);
+            if (_response.isEmpty) Navigator.of(context).pop();
 
             Navigator.of(context).pop(QuestionAnswer(response: _response));
           },
