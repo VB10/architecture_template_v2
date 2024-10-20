@@ -288,9 +288,118 @@ That's it. You can use your model now with json_serializable.
 
 2- Theme
 Theme most important thing for this article. I'll create theme with "Theme Manager" and it is very easy to use. This is help to make a theme to light and dark. You can use
-theme builder from material. Also text theme class for helping text theme for text theme. I was create a good article about this almost 2 year ago. You can check it. Theme main idea is
+theme builder from material. Also text theme class for helping text theme for text theme. I was create a good article about this. You can check it. Theme main idea is
 "how to make a color etc from mainly" and "how to implement new theme with easy".
 
 vb10 theme medium
 
-The other hand is code generation. It is help to make a code easier, more readable and acssable. It is very useful for project. I'm usign many package for code genration layer. Asset gen help to make a asset easier. For example image,lottie, json, font, etc. Localization gen is for localization. Envied gen is for environment management. Within this article manage this code genration alyer from new module. It is very easy to implement and manage.
+The theme structure has a main idea coming from abstract layer as a CustomTheme. It helps to make a multiple scheme like light and dark.
+
+```dart
+/// Custom theme for project design
+abstract class CustomTheme {
+  ThemeData get themeData;
+
+  FloatingActionButtonThemeData get floatingActionButtonThemeData;
+}
+```
+
+After that you can implement your theme like this.
+
+```dart
+/// Custom light theme for project design
+final class CustomLightTheme implements CustomTheme {
+  @override
+  ThemeData get themeData => ThemeData(
+        useMaterial3: true,
+        fontFamily: GoogleFonts.roboto().fontFamily,
+        colorScheme: CustomColorScheme.lightColorScheme,
+        floatingActionButtonTheme: floatingActionButtonThemeData,
+      );
+
+  @override
+  FloatingActionButtonThemeData get floatingActionButtonThemeData =>
+      const FloatingActionButtonThemeData();
+}
+
+```
+
+This file for helping to make a theme basicly in font family, colorScheme etc. The other hand you can make a custom theme like FloatingActionButtonThemeData as a custom. It's need to call from MaterialApp inside.
+
+```dart
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      routerConfig: _appRouter.config(),
+      builder: CustomResponsive.build,
+      theme: CustomLightTheme().themeData,
+      darkTheme: CustomDarkTheme().themeData,
+      themeMode: context.watch<ProductViewModel>().state.themeMode,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+    );
+  }
+```
+
+For example you can need to use a color from colorScheme just call like this.
+
+```dart
+context.general.colorScheme.primary (this estension coming from kartal package)
+```
+
+6. Navigation structure, Scripts for helping development, 3.party package best usage
+
+The main idea is navigation. It is very important for mobile application. I'll show you how to make a navigation structure. I'm using go_router package for this case. This package is very easy to use and it is very powerful. Especially manage a route with auto generate it is useful. Auto router package has a lot of navıgatıon feature in deeply. Let's implement this package in this project.
+
+The app router file help to create a route with auto generate. How many page you have, you can add this flow.
+
+```dart
+
+@AutoRouterConfig(replaceInRouteName: AppRouter._replaceRouteName)
+
+/// Project router information class
+final class AppRouter extends RootStackRouter {
+  static const _replaceRouteName = 'View,Route';
+  @override
+  List<AutoRoute> get routes => [
+        AutoRoute(page: HomeRoute.page, initial: true),
+        AutoRoute(page: HomeDetailRoute.page),
+      ];
+}
+
+```
+
+After that you need to wrap your project with AppRouter. It is need to call MaterialApp.router then pass to your config.
+
+```dart
+final class _MyApp extends StatelessWidget {
+  const _MyApp();
+  static final _appRouter = AppRouter();
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      routerConfig: _appRouter.config(),
+    );
+  }
+}
+```
+
+It is almost done. After this implementation you can use like this. Also you have many feature for navigation like push, pop, replace, etc with context.router usage.
+
+```dart
+ context.router.push(HomeDetailRoute(id: user.userId.toString()));
+```
+
+> Auto router works only view file so the build yaml file can be update for work effectively.
+
+```yaml
+targets:
+  $default:
+    builders:
+      auto_route_generator:auto_route_generator: # this for @RoutePage
+        generate_for:
+          - lib/**/**_view.dart
+      auto_route_generator:auto_router_generator: # this for @AutoRouterConfig
+        generate_for:
+          - lib/product/navigation/app_router.dart
+```
