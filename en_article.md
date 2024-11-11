@@ -349,6 +349,24 @@ context.general.colorScheme.primary (this estension coming from kartal package)
 
 6. Navigation structure, Scripts for helping development, 3.party package best usage
 
+### Scripts for helping development
+While developing like this bigger project, I need to make a script for helping development. I'll show you how to make a script for helping development. These scripts are very useful for development.
+
+- android_build.sh => It will make apk or app bundle
+- build.sh => It's run build runner
+- clean.sh => It's clean your main project (flutter, ios clean)
+- full_clean.sh => It's clean your project with sub modules
+- icon_build.sh => It's make a icon for android and ios
+- ios_clean.sh => It's clean a ios build and pod file
+- lang.sh => It's generate a localization code (call easy_localization:generate)
+
+Of course you can add more script for your needs but these scripts generally help to development. After my video I'm starting to use two new solution for script using
+
+- rps package for create script in pubspec yaml then call with rps command (https://pub.dev/packages/rps)
+- Command List extension for vscode for sum of script (https://marketplace.visualstudio.com/items?itemName=yamajyn.commandlist)
+
+### Navigation structure
+
 The main idea is navigation. It is very important for mobile application. I'll show you how to make a navigation structure. I'm using go_router package for this case. This package is very easy to use and it is very powerful. Especially manage a route with auto generate it is useful. Auto router package has a lot of navıgatıon feature in deeply. Let's implement this package in this project.
 
 The app router file help to create a route with auto generate. How many page you have, you can add this flow.
@@ -403,3 +421,139 @@ targets:
         generate_for:
           - lib/product/navigation/app_router.dart
 ```
+
+### 3.party package best usage
+
+Third party package most of the time used many project. It is very important to use this package for the future. I'll show you how to use this package for best usage. I have been using Cached network image pakcage until now. It is very useful for image loading. Let's make a example for this package.
+
+Before install this package you need to add a dependency in pubspec.yaml file.
+
+```yaml
+cached_network_image: ^latest_version
+```
+
+After I'm going to create a new module as a common. It will help to use this package in the project. My idea is create new widget for using this package. The new widget does need's to any package configuration.
+It just depend my primitive class. That's so important because it can be change everytime or improve without any extra problem for my main project. Main project just know my new widget does not read or reach my cached network image.
+
+```dart
+/// It will provide to image caching and image loading from network
+final class CustomNetworkImage extends StatelessWidget {
+  /// The line `const CustomNetworkImage({super.key});` is defining a constructor
+  /// for the `CustomNetworkImage` class.
+  const CustomNetworkImage({
+    super.key,
+    this.imageUrl,
+    this.emptyWidget,
+    this.memCache = const CustomMemCache(height: 200, width: 200),
+    this.boxFit = BoxFit.cover,
+    this.loadingWidget,
+    this.size,
+  });
+}
+
+```
+
+This one is very simple. It is not need any package configuration. It is just depend my primitive class. MemCache is for memory cache using for core package. This widget can use everywhere in the project with paramters and does not need any extra configuration.
+
+> Main idea is this coding: Does not give a any package source code the anyone. It is only depend my primitive class. It will help to improve or change in the future for easily.
+
+7. Kartal package, Responsive design, Custom widget design
+
+The kartal package developing my hand. It is helping to coding with extensions. Package contains many extension with primitive type or advanced type. It is very useful for coding.
+For examples:
+
+```dart
+context.general.colorScheme.primary
+context.sized.low (0.1 percent of screen size)
+GlobalKey.rendererBox
+List.ext.nullOrEmpty
+''.ext.launchUrl
+```
+
+And more. You can check out my pub.dev page for more detail. https://pub.dev/packages/kartal
+![Context extension sample](https://github.com/VB10/kartal/blob/master/github/context_extension.png?raw=true)
+
+### Responsive design
+
+After flutter growing up mobile, tablet with web. Responsive design pretty important for project. I'm using Responsive package for this case. This package is very easy to use and it is very powerful. The package needs to declare in the pubspec.yaml file.
+
+```yaml
+responsive_framework: ^latest_version
+```
+
+The package very useful for responsive design. It has many breakpoint for responsive design. You can check out the detail from pub.dev page. https://pub.dev/packages/responsive_framework
+I was creating a custom responsive class for managing responsive design breakpoint.
+
+```dart
+final class CustomResponsive {
+  /// Make to ui responsive
+  static Widget build(BuildContext context, Widget? child) {
+    return ResponsiveBreakpoints.builder(
+      child: child!,
+      breakpoints: [
+        const Breakpoint(start: 0, end: 450, name: MOBILE),
+        const Breakpoint(start: 451, end: 800, name: TABLET),
+        const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+        const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+      ],
+    );
+  }
+}
+
+```
+
+You can declare your breakpoint in this class. After your implementation your project can be responsive very easily. You just make your poject single design for example Iphone 14 then you don't need to care about other screen size. It will working a responsive for all screen size.
+
+Also you can check this website for more detail. https://gallery.codelessly.com/flutterwebsites/minimal/
+
+### Custom widget design
+
+Probably you will many times create a new widget. While making a widget you don't forget to basic, usefull and expandable.So this time I'm going to show you how to make a dialog component. My dialog is success_dialog. It very basic widget for showing a success message.
+
+```dart
+final class SuccessDialog extends StatelessWidget {
+  /// Constructor for dialog
+  const SuccessDialog({required this.title, super.key});
+
+  /// Title for the dialog
+  final String title;
+
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog.adaptive(
+      title: Text(title),
+      actions: [
+        IconButton(
+          onPressed: () {
+            Navigator.of(context).pop(true);
+          },
+          icon: const Icon(Icons.check),
+        ),
+      ],
+    );
+  }
+}
+```
+
+That's basic widget for version of one. If i want to show this diaog, i've to call "ShowDialog" code everywhere. It's not good for using, quality and maintainability. I'm going to add a new function as a show function.
+
+```dart
+
+  /// Show the dialog for success
+  /// This will always return [true]
+  static Future<bool> show({
+    required String title,
+    required BuildContext context,
+  }) async {
+    await DialogBase.show<bool>(
+      context: context,
+      builder: (context) => SuccessDialog(title: title),
+    );
+    return true;
+  }
+```
+
+My team can be know how to use this alert very easily. It just call "SuccessDialog.show" function.
+
+> Little hint when you close your widget i mean add a private constructor, anyone can't call your widget directly.
