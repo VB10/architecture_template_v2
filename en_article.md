@@ -21,7 +21,7 @@ The navigation
 
 Let's start this survey for begining great architecture.
 
-1.Create Project with Structure Folders
+# 1.Create Project with Structure Folders
 The main idea while developing architecture, this is first point. Because it is provide to where to write coding. This think will help to organize code base in the project. Organization will adapt to your new developer to project, keep the reletaed file same folder and you knew when coming new feature request to put it in your project.my
 Reasons can be going more but the think quite important. Then what is my solution? 
 The solution based on moduler thinks with feature base development. It is sepearte most important logic for ex. databasse/ network etc.
@@ -49,7 +49,7 @@ module/
 └── widgets/
 Thisi structure will provide your every request or you can find a uprade chance. There is reason of good strcutre. you can always add extra solution.
 
-2. Vscode extensions with Pubspec Details
+# 2. Vscode extensions with Pubspec Details
    For this architecture, I use many extensions for helping coding, debugging and fast developing. The other hand I configure my vscode settings for coding better.
    Last part is snippet. I create many snippet for speed up coding. For example I create "hwaFsm" it is mean "HardwareAndro Flutter statefull Model.
 
@@ -86,7 +86,7 @@ firebase_messaging: 4.5.0
 firebase_core: 3.1.0
 PR: https://github.com/VB10/architecture_template_v2/pull/4
 
-3. Localization support
+# 3. Localization support
    The localization is very important for mobile application the latest year. Almost all application has localization. So I want to show you how to add localization in this project.
    It will making from localization manager for language feature. The other hand is generate key for localization. I'm using "easy_localization" package for this case. I have been using this package for a long time and it is very stable.
 
@@ -143,7 +143,7 @@ Text(LocaleKeys.home_title.tr());
 Easy Localization Package: https://pub.dev/packages/easy_localization
 PR: https://github.com/VB10/architecture_template_v2/pull/2
 
-4. Project requirements while app staring and Environment management
+# 4. Project requirements while app staring and Environment management
    The application start with requirements. Many things can be checked before running the application. For example, internet permission, camera permission, database connection, etc.
    I want to show you how to manage this situation.
 
@@ -213,7 +213,7 @@ That's it. You can use your env variable now with secure for all your variables.
 Don't forget you will learn to code generation for best usage for next section so you can find a right code from this.
 I complelty made general code gen in other sub module.
 
-5. Theme & Code Generation
+# 5. Theme & Code Generation
 
 #Code generation
 In my opinion code generation is most important thing for project. It is help to make a code easier, more readable and acssable. It is very useful for project. I'm usign many package for code genration layer. Asset gen help to make a asset easier. For example image,lottie, json, font, etc. Envied gen is for environment management with secure. Within this article manage this code genration alyer from new module. It is very easy to implement and manage.
@@ -347,7 +347,7 @@ For example you can need to use a color from colorScheme just call like this.
 context.general.colorScheme.primary (this estension coming from kartal package)
 ```
 
-6. Navigation structure, Scripts for helping development, 3.party package best usage
+# 6. Navigation structure, Scripts for helping development, 3.party package best usage
 
 ### Scripts for helping development
 While developing like this bigger project, I need to make a script for helping development. I'll show you how to make a script for helping development. These scripts are very useful for development.
@@ -457,7 +457,7 @@ This one is very simple. It is not need any package configuration. It is just de
 
 > Main idea is this coding: Does not give a any package source code the anyone. It is only depend my primitive class. It will help to improve or change in the future for easily.
 
-7. Kartal package, Responsive design, Custom widget design
+# 7. Kartal package, Responsive design, Custom widget design
 
 The kartal package developing my hand. It is helping to coding with extensions. Package contains many extension with primitive type or advanced type. It is very useful for coding.
 For examples:
@@ -557,3 +557,493 @@ That's basic widget for version of one. If i want to show this diaog, i've to ca
 My team can be know how to use this alert very easily. It just call "SuccessDialog.show" function.
 
 > Little hint when you close your widget i mean add a private constructor, anyone can't call your widget directly.
+
+
+# 8. Stateless widget, Stateful widget and Mixin Usage
+The topic is related to every flutter project. It is valuable for understanding the your coding life. Let's check out of example for usage. Actually i did not tell about core concept of these widgets. I'll try to show usage of these widgets.
+
+- First point is you can use inheritance for some widget. Most of usage is padding. It is using probably in every project. My idea is making a padding widget class for making standard the project.
+
+```dart
+final class ProjectPadding extends EdgeInsets {
+  const ProjectPadding._() : super.all(0);
+
+  /// All Padding
+  ///
+
+  /// [ProjectPadding.allSmall] is 8
+  const ProjectPadding.allSmall() : super.all(8);
+
+  /// [ProjectPadding.allMedium] is 16
+  const ProjectPadding.allMedium() : super.all(16);
+
+  /// [ProjectPadding.allNormal] is 20
+  const ProjectPadding.allNormal() : super.all(20);
+
+  /// [ProjectPadding.allLarge] is 32
+  const ProjectPadding.allLarge() : super.all(32);
+
+  /// Symmetric
+  /// Only left,right,bottom
+}
+```
+
+This is helping to usable component for project. You don't need to add extra stateless widget for padding. You can use this class for padding.
+
+- The other example is stateless widget. I'm creating a widget as a NormalButton. It is simple button with border radius.
+
+```dart
+/// radius is 20
+final class NormalButton extends StatelessWidget {
+  const NormalButton({required this.title, required this.onPressed, super.key});
+
+  /// title text
+  final String title;
+
+  /// button on pressed
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      /// todo:
+      radius: ProjectRadius.normal.value,
+      onTap: onPressed,
+      child: Text(title),
+    );
+  }
+}
+
+```
+
+The class getting two parameter. First one title for showing a text. Second one is onPressed for callback. We're trying to make a stateless widget. Because it helping to make a widget more reusable.
+You can make your sub widget for like this. It is core concept of sub widget. ProjectRadius is for border radius. It is basic enum for radius.
+
+
+```dart
+enum ProjectRadius {
+  /// 8.
+  small(8),
+
+  /// 16.
+  medium(16),
+
+  /// 20.
+  normal(20),
+
+  /// 32.
+  large(32);
+
+  final double value;
+  const ProjectRadius(this.value);
+
+  
+}
+```
+
+- The other example is stateful widget. I'm creating a widget as a CustomLoginButton. It is helping to show a loading state in button without any extra configuration.
+This widget can use in many project. When client sending any request, you can show a loading state in button. If you try to manage loading state in every view, it is very hard to maintain.
+
+```dart
+final class CustomLoginButton extends StatefulWidget {
+  const CustomLoginButton({required this.onOperation, super.key});
+  final AsyncValueGetter<bool> onOperation;
+  @override
+  State<CustomLoginButton> createState() => _CustomLoginButtonState();
+}
+
+class _CustomLoginButtonState extends State<CustomLoginButton>
+    with MountedMixin, _CustomLoginButtonMixin {
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<bool>(
+      valueListenable: _isLoadingNotifier,
+      builder: (BuildContext context, bool value, Widget? child) {
+        if (value) return const SizedBox();
+        return NormalButton(
+          title: 'Login',
+          onPressed: () async {
+            await _onPressed(context);
+          },
+        );
+      },
+    );
+  }
+}
+
+```
+I'm getting async value from widget parameter. It is helping to manage loading state while sending a request. When you need any operation related to ui screen, you can use stateful widget.
+
+- Last point is mixin. Mixin is helping to manage a state in widget. It is very useful for stateful widget. Statefull or Stateless widget just show to only view code. When you need to any operation like button press, service request you do not write in view code. You can write in mixin. It helps to keep clean code with maintainability.
+
+```dart 
+mixin _CustomLoginButtonMixin
+    on MountedMixin<CustomLoginButton>, State<CustomLoginButton> {
+  final ValueNotifier<bool> _isLoadingNotifier = ValueNotifier<bool>(false);
+
+  @override
+  void initState() {
+    super.initState();
+    _isLoadingNotifier.value = false;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  Future<void> _onPressed(BuildContext context) async {
+    _isLoadingNotifier.value = true;
+    final response = await widget.onOperation.call();
+    await safeOperation(() async {
+      if (response) Navigator.of(context).pop();
+      _isLoadingNotifier.value = false;
+    });
+  }
+}
+```
+
+This mixin just only use in CustomLoginButton. Beacuse this is depend CustomLoginButton State object. And i closed operation, veriable etc if does not need. Mixin and State class usage very helpfull for basic state management.
+Anyone can find ui issue only view class, logic issue can find in mixin.
+
+Some mixin depends on only view, someone depends on state. For example you need to use mountain check before every ui update. You can use MountedMixin for this case.
+
+```dart
+mixin MountedMixin<T extends StatefulWidget> on State<T> {
+  Future<void> safeOperation(AsyncCallback callback) async {
+    if (!mounted) return;
+    await callback.call();
+  }
+}
+```
+
+
+# 9. Network Manager with Vexana and GetIt Manager (Dependency injection)
+
+Vexana mine package for network. I was writing a this package with dio. It is adding extra feature for business life. You can check out my pub.dev page for more detail. https://pub.dev/packages/vexana
+
+Some capibilities of this package:
+
+- Generic response model
+- Refresh machanism
+- Caching
+- Without network connection manage
+
+So this package pretty useful for enterprise project. You can give a hint, issue or pr any time. Let's implement this package for project. 
+- We need to custom network manager for project configuration.
+
+
+```dart
+import 'package:vexana/vexana.dart';
+
+/// Product network manager
+final class ProductNetworkManager extends NetworkManager<EmptyModel> {
+  ProductNetworkManager.base()
+      : super(
+          options: BaseOptions(
+            baseUrl: AppEnvironmentItems.baseUrl.value,
+          ),
+        );
+
+  /// Handle error
+  /// [onErrorStatus] is error status code [HttStatus]
+  void listenErrorState({required ValueChanged<int> onErrorStatus}) {
+    interceptors.add(
+      InterceptorsWrapper(
+        onError: (e, handler) {
+          onErrorStatus(e.response?.statusCode ?? HttpStatus.notFound);
+          return handler.next(e);
+        },
+      ),
+    );
+  }
+}
+
+```
+
+You can add extra property for your network manager. Fore example base header, base url etc. The other point is you can add interceptor for your network manager. It is helping to manage a network error. (It is coming from dio package). Let's use our network manager in product service.
+  
+  ```dart
+  final class LoginService extends AuthenticationOperation {
+  LoginService(INetworkManager<EmptyModel> networkManager)
+      : _networkManager = networkManager;
+
+  final INetworkManager<EmptyModel> _networkManager;
+
+  @override
+  Future<List<User>> users() async {
+    final response = await _networkManager.send<User, List<User>>(
+      ProductServicePath.posts.value,
+      parseModel: const User(),
+      method: RequestType.GET,
+    );
+
+    return response.data ?? [];
+  }
+}
+```
+
+Also you have to implement INetworkModel for your entity model:
+
+```dart
+
+@JsonSerializable()
+class User extends INetworkModel<User> with EquatableMixin {
+  const User({this.userId, this.id, this.title, this.body});
+
+  /// Get user from json
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  final int? userId;
+  final int? id;
+  final String? title;
+  final String? body;
+}
+
+```
+
+This service is using for login page. I just say two type paremater with send method. First one is response model. Second one is what is response type. And send request need to path, parse model and request type.
+ The users method will return List<User>. Finally you can get a response data.
+
+The response object has two paramater:
+- data: response data
+- error: error model
+
+You can return this error model to ui screen. It is helping to show a error message to user.
+
+- Many project need to use same object for everywhere. For example our ProductNetworkManager. It is using for product service. If you want to use this network manager in other service, you have to create same object. It is very hard to maintain. So we can use GetIt package for this case.
+
+
+```dart
+
+final class ProductContainer {
+  const ProductContainer._();
+  static final _getIt = GetIt.I;
+
+  /// Product core required items
+  static void setup() {
+    _getIt
+      ..registerSingleton(ProductCache(cacheManager: HiveCacheManager()))
+      ..registerSingleton<ProductNetworkManager>(ProductNetworkManager.base())
+      ..registerLazySingleton<ProductViewModel>(
+        ProductViewModel.new,
+      );
+  }
+}
+```
+I put it my core manager file. It is helping to manage a dependency injection. You can register your service in this file. My idea does not give a git it directly to client. I'll only show the items. This class will help us how many service implemented in project.
+
+```dart
+ final class ProductStateItems {
+  const ProductStateItems._();
+
+  static ProductNetworkManager get productNetworkManager =>
+      ProductContainer.read<ProductNetworkManager>();
+
+  static ProductViewModel get productViewModel =>
+      ProductContainer.read<ProductViewModel>();
+
+  static ProductCache get productCache => ProductContainer.read<ProductCache>();
+}
+```
+
+I can call these paramaters in any service or view model. It is helping to manage a dependency injection. For example while starting home view, i need to network service. So i'm getting to call this one.
+
+```dart
+
+mixin HomeViewMixin on BaseState<HomeView> {
+  late final ProductNetworkErrorManager _productNetworkErrorManager;
+  late final HomeViewModel _homeViewModel;
+
+  HomeViewModel get homeViewModel => _homeViewModel;
+
+  @override
+  void initState() {
+    super.initState();
+    _productNetworkErrorManager = ProductNetworkErrorManager(context);
+    ProductStateItems.productNetworkManager.listenErrorState(
+      onErrorStatus: _productNetworkErrorManager.handleError,
+    );
+
+    _homeViewModel = HomeViewModel(
+      operationService: LoginService(productNetworkManager),
+      userCacheOperation: ProductStateItems.productCache.userCacheOperation,
+    );
+  }
+}
+
+```
+
+This is helping to manage a network error. And also i'm getting a network service. I can change network service only one place. GetIt package is helping to manage a dependency injection.
+
+
+# 10. State Management with BLoC Package
+
+The golden point has come. The state management is the most important part of the project. I'm using BLoC package for this case. I'm trying to so seperate my state items to my ui screen. It is helping to manage a state in view - view model. I'll add show my best usage for managing state in project. I'm very liked for bloc usage. For example:
+- BlocListener - It is helping to listen a state change.
+- BlocBuilder - It is helping to build a ui screen.
+- BlocConsumer - It is helping to listen a state change and build a ui screen.
+- BlocSelector - It is helping to select a state value.
+
+
+And also testing and managing state is very easy. I'll add base class for utility. I prefer to use "cubit" usage instead of "bloc" usage. It is easy to use very well.
+Let's make a example for this case. I'm creating a home view model for home page.
+
+
+```dart
+final class HomeViewModel extends BaseCubit<HomeState> {
+  /// [AuthenticationOperation] service
+  HomeViewModel({
+    required AuthenticationOperation operationService,
+    required HiveCacheOperation<UserCacheModel> userCacheOperation,
+  })  : _authenticationOperationService = operationService,
+        _userCacheOperation = userCacheOperation,
+        super(const HomeState(isLoading: false));
+
+        .... others...
+
+}
+    
+```
+
+This is first point of my project start. I'm creating view-model class for managing state. And i'm getting some veriable for using businses function. The other point state class for notify state change.
+
+```dart
+final class HomeState extends Equatable {
+  const HomeState({required this.isLoading, this.users});
+
+  final bool isLoading;
+  final List<User>? users;
+
+  @override
+  List<Object?> get props => [isLoading, users];
+
+  HomeState copyWith({bool? isLoading, List<User>? users}) {
+    return HomeState(
+      isLoading: isLoading ?? this.isLoading,
+      users: users ?? this.users,
+    );
+  }
+}
+
+```
+
+I've many methods for this state class. I prefer to use like this. I'm making immutable only one state class. Equtable will help to only notify change state, what is changed. The copyWith method is helping to copy a state with new value. It is basic but pretty enough for screen. 
+
+Last point is BaseCubit class. It is helping to manage a state in view model. You can add your logic for required whole project.
+
+```dart
+
+abstract class BaseCubit<T extends Object> extends Cubit<T> {
+  BaseCubit(super.initialState);
+
+  @override
+  void emit(T state) {
+    if (isClosed) return;
+    super.emit(state);
+  }
+}
+
+```
+
+This base cubit is helping to when your state trying to emit, the page is closed, it will not emit a state. You can implement for your logic in this class.
+Let's make a example using with this home view model.
+
+```dart
+  /// Get users
+  Future<void> fetchUsers() async {
+    CustomLogger.showError<User>(usersFromCache);
+    final response = await _authenticationOperationService.users();
+    _saveItems(response);
+    emit(state.copyWith(users: response));
+  }
+```
+
+It will fetch data from backend and will update a state. Logger and _saveItems method is make a cache and log. Let's look home view and how to handle this view model.
+
+```dart
+   const Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: _UserBlocList(),
+            ),
+          ],
+        ),
+```
+
+As you can see my user bloc list is a constant widget. It is important for build a ui screen. This point it need to be a every screen, This mean that you ou have to seperate your ui screen to widget.
+Check this widget:
+
+```dart
+final class _UserBlocList extends StatelessWidget {
+  const _UserBlocList();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<HomeViewModel, HomeState>(
+      listener: (context, state) {},
+      child: BlocSelector<HomeViewModel, HomeState, List<User>>(
+        selector: (state) {
+          return state.users ?? [];
+        },
+        builder: (context, state) {
+          if (state.isEmpty) return const SizedBox.shrink();
+
+          return HomeUserList(users: state);
+        },
+      ),
+    );
+  }
+}
+
+  ```
+
+This widget using BlocSelector. It very usefull usage complex state. You can select a state value and build a ui screen.
+
+This using for screen by screen example. Also you can create a bigger object for calling every screen. For example you can create a state initialize widget.
+
+```dart
+final class StateInitialize extends StatelessWidget {
+  const StateInitialize({required this.child, super.key});
+  final Widget child;
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ProductViewModel>.value(
+          value: ProductStateItems.productViewModel,
+        ),
+      ],
+      child: child,
+    );
+  }
+}
+
+```
+
+This ProductViewModel object can be reachable for every screen. You can add some logical operation in this widget. It is helping to manage a state in project. I put it my network manager, cache manager and view model. Lastly i'm calling this widget in main.dart file.
+
+```dart
+Future<void> main() async {
+  await ApplicationInitialize().make();
+  runApp(ProductLocalization(child: const StateInitialize(child: _MyApp())));
+}
+
+```
+
+That is all. State initialize for ready to manage a global state in project. You can put for example theme change operation for calling everywhere.
+
+
+```dart
+themeMode: context.watch<ProductViewModel>().state.themeMode,
+```
+(From material app)
+
+
+# 11. Cache Operation with Hive
+
+# 12. Unit test, Integration test, Widget test
+
+# 13. Pigeon, Fastlane, App Screen generator.
+
+# 14. The End
