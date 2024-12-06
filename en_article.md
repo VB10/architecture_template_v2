@@ -22,6 +22,7 @@ The navigation
 Let's start this survey for begining great architecture.
 
 # 1.Create Project with Structure Folders
+
 The main idea while developing architecture, this is first point. Because it is provide to where to write coding. This think will help to organize code base in the project. Organization will adapt to your new developer to project, keep the reletaed file same folder and you knew when coming new feature request to put it in your project.my
 Reasons can be going more but the think quite important. Then what is my solution? 
 The solution based on moduler thinks with feature base development. It is sepearte most important logic for ex. databasse/ network etc.
@@ -50,8 +51,9 @@ module/
 Thisi structure will provide your every request or you can find a uprade chance. There is reason of good strcutre. you can always add extra solution.
 
 # 2. Vscode extensions with Pubspec Details
-   For this architecture, I use many extensions for helping coding, debugging and fast developing. The other hand I configure my vscode settings for coding better.
-   Last part is snippet. I create many snippet for speed up coding. For example I create "hwaFsm" it is mean "HardwareAndro Flutter statefull Model.
+
+For this architecture, I use many extensions for helping coding, debugging and fast developing. The other hand I configure my vscode settings for coding better.
+Last part is snippet. I create many snippet for speed up coding. For example I create "hwaFsm" it is mean "HardwareAndro Flutter statefull Model.
 
 It is example of "base model" snippet.
 
@@ -87,8 +89,9 @@ firebase_core: 3.1.0
 PR: https://github.com/VB10/architecture_template_v2/pull/4
 
 # 3. Localization support
-   The localization is very important for mobile application the latest year. Almost all application has localization. So I want to show you how to add localization in this project.
-   It will making from localization manager for language feature. The other hand is generate key for localization. I'm using "easy_localization" package for this case. I have been using this package for a long time and it is very stable.
+
+The localization is very important for mobile application the latest year. Almost all application has localization. So I want to show you how to add localization in this project.
+It will making from localization manager for language feature. The other hand is generate key for localization. I'm using "easy_localization" package for this case. I have been using this package for a long time and it is very stable.
 
 Let's see the example of localization implementation. First part of is define your key with value in the json. The important thing is the key. You can use argument for dynamic value.
 For example: You want to show "Save 10000" in the button. You can use {count} for dynamic value.
@@ -144,8 +147,9 @@ Easy Localization Package: https://pub.dev/packages/easy_localization
 PR: https://github.com/VB10/architecture_template_v2/pull/2
 
 # 4. Project requirements while app staring and Environment management
-   The application start with requirements. Many things can be checked before running the application. For example, internet permission, camera permission, database connection, etc.
-   I want to show you how to manage this situation.
+
+The application start with requirements. Many things can be checked before running the application. For example, internet permission, camera permission, database connection, etc.
+I want to show you how to manage this situation.
 
 Environment management is very important for mobile application. It has many values for example change base url, api key, etc. The thing is how to keep this in project.
 Envied package is very useful for this case. it helps to manage environment variable with obfuscate. It is not mean very secure but it is very useful for this case.
@@ -558,8 +562,8 @@ My team can be know how to use this alert very easily. It just call "SuccessDial
 
 > Little hint when you close your widget i mean add a private constructor, anyone can't call your widget directly.
 
-
 # 8. Stateless widget, Stateful widget and Mixin Usage
+
 The topic is related to every flutter project. It is valuable for understanding the your coding life. Let's check out of example for usage. Actually i did not tell about core concept of these widgets. I'll try to show usage of these widgets.
 
 - First point is you can use inheritance for some widget. Most of usage is padding. It is using probably in every project. My idea is making a padding widget class for making standard the project.
@@ -619,7 +623,6 @@ final class NormalButton extends StatelessWidget {
 The class getting two parameter. First one title for showing a text. Second one is onPressed for callback. We're trying to make a stateless widget. Because it helping to make a widget more reusable.
 You can make your sub widget for like this. It is core concept of sub widget. ProjectRadius is for border radius. It is basic enum for radius.
 
-
 ```dart
 enum ProjectRadius {
   /// 8.
@@ -637,12 +640,12 @@ enum ProjectRadius {
   final double value;
   const ProjectRadius(this.value);
 
-  
+
 }
 ```
 
 - The other example is stateful widget. I'm creating a widget as a CustomLoginButton. It is helping to show a loading state in button without any extra configuration.
-This widget can use in many project. When client sending any request, you can show a loading state in button. If you try to manage loading state in every view, it is very hard to maintain.
+  This widget can use in many project. When client sending any request, you can show a loading state in button. If you try to manage loading state in every view, it is very hard to maintain.
 
 ```dart
 final class CustomLoginButton extends StatefulWidget {
@@ -672,11 +675,12 @@ class _CustomLoginButtonState extends State<CustomLoginButton>
 }
 
 ```
+
 I'm getting async value from widget parameter. It is helping to manage loading state while sending a request. When you need any operation related to ui screen, you can use stateful widget.
 
 - Last point is mixin. Mixin is helping to manage a state in widget. It is very useful for stateful widget. Statefull or Stateless widget just show to only view code. When you need to any operation like button press, service request you do not write in view code. You can write in mixin. It helps to keep clean code with maintainability.
 
-```dart 
+```dart
 mixin _CustomLoginButtonMixin
     on MountedMixin<CustomLoginButton>, State<CustomLoginButton> {
   final ValueNotifier<bool> _isLoadingNotifier = ValueNotifier<bool>(false);
@@ -717,7 +721,6 @@ mixin MountedMixin<T extends StatefulWidget> on State<T> {
 }
 ```
 
-
 # 9. Network Manager with Vexana and GetIt Manager (Dependency injection)
 
 Vexana mine package for network. I was writing a this package with dio. It is adding extra feature for business life. You can check out my pub.dev page for more detail. https://pub.dev/packages/vexana
@@ -729,9 +732,9 @@ Some capibilities of this package:
 - Caching
 - Without network connection manage
 
-So this package pretty useful for enterprise project. You can give a hint, issue or pr any time. Let's implement this package for project. 
-- We need to custom network manager for project configuration.
+So this package pretty useful for enterprise project. You can give a hint, issue or pr any time. Let's implement this package for project.
 
+- We need to custom network manager for project configuration.
 
 ```dart
 import 'package:vexana/vexana.dart';
@@ -762,24 +765,24 @@ final class ProductNetworkManager extends NetworkManager<EmptyModel> {
 ```
 
 You can add extra property for your network manager. Fore example base header, base url etc. The other point is you can add interceptor for your network manager. It is helping to manage a network error. (It is coming from dio package). Let's use our network manager in product service.
-  
-  ```dart
-  final class LoginService extends AuthenticationOperation {
-  LoginService(INetworkManager<EmptyModel> networkManager)
-      : _networkManager = networkManager;
 
-  final INetworkManager<EmptyModel> _networkManager;
+```dart
+final class LoginService extends AuthenticationOperation {
+LoginService(INetworkManager<EmptyModel> networkManager)
+    : _networkManager = networkManager;
 
-  @override
-  Future<List<User>> users() async {
-    final response = await _networkManager.send<User, List<User>>(
-      ProductServicePath.posts.value,
-      parseModel: const User(),
-      method: RequestType.GET,
-    );
+final INetworkManager<EmptyModel> _networkManager;
 
-    return response.data ?? [];
-  }
+@override
+Future<List<User>> users() async {
+  final response = await _networkManager.send<User, List<User>>(
+    ProductServicePath.posts.value,
+    parseModel: const User(),
+    method: RequestType.GET,
+  );
+
+  return response.data ?? [];
+}
 }
 ```
 
@@ -802,16 +805,16 @@ class User extends INetworkModel<User> with EquatableMixin {
 ```
 
 This service is using for login page. I just say two type paremater with send method. First one is response model. Second one is what is response type. And send request need to path, parse model and request type.
- The users method will return List<User>. Finally you can get a response data.
+The users method will return List<User>. Finally you can get a response data.
 
 The response object has two paramater:
+
 - data: response data
 - error: error model
 
 You can return this error model to ui screen. It is helping to show a error message to user.
 
 - Many project need to use same object for everywhere. For example our ProductNetworkManager. It is using for product service. If you want to use this network manager in other service, you have to create same object. It is very hard to maintain. So we can use GetIt package for this case.
-
 
 ```dart
 
@@ -830,6 +833,7 @@ final class ProductContainer {
   }
 }
 ```
+
 I put it my core manager file. It is helping to manage a dependency injection. You can register your service in this file. My idea does not give a git it directly to client. I'll only show the items. This class will help us how many service implemented in project.
 
 ```dart
@@ -875,19 +879,17 @@ mixin HomeViewMixin on BaseState<HomeView> {
 
 This is helping to manage a network error. And also i'm getting a network service. I can change network service only one place. GetIt package is helping to manage a dependency injection.
 
-
 # 10. State Management with BLoC Package
 
 The golden point has come. The state management is the most important part of the project. I'm using BLoC package for this case. I'm trying to so seperate my state items to my ui screen. It is helping to manage a state in view - view model. I'll add show my best usage for managing state in project. I'm very liked for bloc usage. For example:
+
 - BlocListener - It is helping to listen a state change.
 - BlocBuilder - It is helping to build a ui screen.
 - BlocConsumer - It is helping to listen a state change and build a ui screen.
 - BlocSelector - It is helping to select a state value.
 
-
 And also testing and managing state is very easy. I'll add base class for utility. I prefer to use "cubit" usage instead of "bloc" usage. It is easy to use very well.
 Let's make a example for this case. I'm creating a home view model for home page.
-
 
 ```dart
 final class HomeViewModel extends BaseCubit<HomeState> {
@@ -902,7 +904,7 @@ final class HomeViewModel extends BaseCubit<HomeState> {
         .... others...
 
 }
-    
+
 ```
 
 This is first point of my project start. I'm creating view-model class for managing state. And i'm getting some veriable for using businses function. The other point state class for notify state change.
@@ -927,7 +929,7 @@ final class HomeState extends Equatable {
 
 ```
 
-I've many methods for this state class. I prefer to use like this. I'm making immutable only one state class. Equtable will help to only notify change state, what is changed. The copyWith method is helping to copy a state with new value. It is basic but pretty enough for screen. 
+I've many methods for this state class. I prefer to use like this. I'm making immutable only one state class. Equtable will help to only notify change state, what is changed. The copyWith method is helping to copy a state with new value. It is basic but pretty enough for screen.
 
 Last point is BaseCubit class. It is helping to manage a state in view model. You can add your logic for required whole project.
 
@@ -958,7 +960,7 @@ Let's make a example using with this home view model.
   }
 ```
 
-It will fetch data from backend and will update a state. Logger and _saveItems method is make a cache and log. Let's look home view and how to handle this view model.
+It will fetch data from backend and will update a state. Logger and \_saveItems method is make a cache and log. Let's look home view and how to handle this view model.
 
 ```dart
    const Column(
@@ -996,7 +998,7 @@ final class _UserBlocList extends StatelessWidget {
   }
 }
 
-  ```
+```
 
 This widget using BlocSelector. It very usefull usage complex state. You can select a state value and build a ui screen.
 
@@ -1033,14 +1035,227 @@ Future<void> main() async {
 
 That is all. State initialize for ready to manage a global state in project. You can put for example theme change operation for calling everywhere.
 
-
 ```dart
 themeMode: context.watch<ProductViewModel>().state.themeMode,
 ```
+
 (From material app)
 
-
 # 11. Cache Operation with Hive
+
+The other important part is cache operation. I'm using Hive for this case. Many database solution already exist for mobile side. For example sqflite, shared, realm etc. I prefer to use hive wiht my experience for business life. It works speedly, safety and easy to use. This time i'm making a cache manager in sub module. I always try to choose sub module when the dependency is not releated to main module.
+
+I'm using hive new version. This is more effective and easy to use. It is writing with isaar core. Many operation is working without async operation. You don't need to extra paramater to add model. Let's create a manager for this project.
+
+I'm trying to implement strategy design for cache manager. It will help to make a cache operation with diffrent package with easy.
+
+```dart
+
+abstract class CacheManager {
+  const CacheManager({this.path});
+  Future<void> init({required List<CacheModel> items});
+  void remove();
+  final String? path;
+}
+
+
+```
+
+Then let's make a hive cache manager with this base. My cache manager helping to initialize a hive database and remove a hive database.
+While initializing a hive database, i'm registering a hive adapter for my cache model. Cache model items are important for this operation.
+
+```dart
+/// The HiveCacheManager class is an implementation of the CacheManager class.
+final class HiveCacheManager extends CacheManager {
+  /// [path] is the path to the directory
+  ///  where the Hive database files are stored.
+  HiveCacheManager({super.path});
+
+  @override
+  Future<void> init({required List<CacheModel> items}) async {
+    final documentPath =
+        path ?? (await getApplicationDocumentsDirectory()).path;
+    Hive.defaultDirectory = documentPath;
+
+    for (final item in items) {
+      Hive.registerAdapter('${item.runtimeType}', item.fromDynamicJson);
+    }
+  }
+
+  @override
+  void remove() {
+    Hive.deleteAllBoxesFromDisk();
+  }
+}
+```
+
+The cache model is extend BaseModel class. It is helping to make a cache model with json. You need to add your core operation model while initializing a hive database. This class making a cache for user model. I did my unit test for this class.
+
+```dart
+class UserCache with CacheModel {
+  UserCache({required this.id, required this.name});
+  UserCache.empty() : this(id: '', name: '');
+  @override
+  final String id;
+  final String name;
+  @override
+  UserCache fromDynamicJson(dynamic json) {
+    final itemMap = json as Map<String, dynamic>;
+    return UserCache(
+      id: itemMap['id'] as String,
+      name: itemMap['name'] as String,
+    );
+  }
+
+```
+
+The last requiredment is cache operation. It will make for general logic to keep data. In generaly, every database package has making this steps..
+
+- Add a item to cache
+- Add all items to cache
+- Remove a item from cache
+- Get all items from cache
+- Get a item from cache
+- and more...
+
+I'm making a cache operation for using every cache model. It is making a general logic for cache operation.
+
+```dart
+abstract class CacheOperation<T extends CacheModel> {
+  /// Initialize cache operation
+  const CacheOperation();
+
+  /// Add a item to cache
+  void add(T item);
+
+  /// Add all items to cache
+  void addAll(List<T> items);
+
+  /// Remove a item from cache
+  void clear();
+
+  /// Get all items from cache
+  List<T> getAll();
+
+  /// Get a item from cache
+  T? get(String id);
+}
+
+```
+
+After the core layer i'm going to create a hive cache operation. It is helping to make a cache operation with hive.
+
+```dart
+class HiveCacheOperation<T extends CacheModel> extends CacheOperation<T> {
+  /// Initialize hive box
+  HiveCacheOperation() {
+    _box = Hive.box<T>(name: T.toString());
+  }
+  late final Box<T> _box;
+  @override
+  void add(T item) {
+    _box.put(item.id, item);
+  }
+
+  @override
+  void addAll(List<T> items) {
+    _box.putAll(Map.fromIterable(items));
+  }
+
+  @override
+  void clear() {
+    _box.clear();
+  }
+
+  @override
+  T? get(String id) {
+    return _box.get(id);
+  }
+
+  @override
+  List<T> getAll() {
+    return _box
+        .getAll(_box.keys)
+        .where((element) => element != null)
+        .cast<T>()
+        .toList();
+  }
+
+  @override
+  void remove(String id) {
+    _box.delete(id);
+  }
+}
+
+```
+
+That's all of cache operation. This using very simple. After implementation any cache model you can use it. For example: HiveCacheOperation<UserCacheModel>. These are the operations:
+
+- HiveCacheOperation<UserCacheModel>().add(UserCacheModel(id: '1', name: 'John'));
+- HiveCacheOperation<UserCacheModel>().getAll();
+- HiveCacheOperation<UserCacheModel>().get('1');
+- HiveCacheOperation<UserCacheModel>().remove('1');
+- HiveCacheOperation<UserCacheModel>().clear();
+
+The core operation is ready. The time to implement to project. I'm adding this cache manager to my product container. It can be reachable for every service, view model etc.
+
+```dart
+static void setup() {
+    _getIt
+      ..registerSingleton(ProductCache(cacheManager: HiveCacheManager()))
+      ..registerSingleton<ProductNetworkManager>(ProductNetworkManager.base())
+      ..registerLazySingleton<ProductViewModel>(
+        ProductViewModel.new,
+      );
+  }
+
+  // application initialize
+     await ProductStateItems.productCache.init();
+```
+
+And let's look my product cache class. It is making a initialize with other required operation. And lastly i'm adding my cache object in product cache. It will help to reach for using in anywhere.
+
+```dart
+/// [ProductCache] is a cache manager for the product module.
+final class ProductCache {
+  ProductCache({required CacheManager cacheManager})
+      : _cacheManager = cacheManager;
+
+  final CacheManager _cacheManager;
+
+  Future<void> init() async {
+    await _cacheManager.init(
+      items: [
+        UserCacheModel.empty(),
+      ],
+    );
+  }
+
+  late final HiveCacheOperation<UserCacheModel> userCacheOperation =
+      HiveCacheOperation<UserCacheModel>();
+}
+
+```
+
+It is ready to use. You can add your cache model in hive cache manager. Let's use in home view. When i'm fetching a user list, i'm making a cache operation.
+
+```dart
+
+  final HiveCacheOperation<UserCacheModel> _userCacheOperation;
+
+  /// Save users to cache
+  void _saveItems(List<User> user) {
+    for (final element in user) {
+      _userCacheOperation.add(UserCacheModel(user: element));
+    }
+  }
+
+  /// Get users from cache
+  List<User> get usersFromCache =>
+      _userCacheOperation.getAll().map((e) => e.user).toList();
+```
+
+That's all. You can use this cache operation for every cache model. And you can implement your own cache manager for other database package.
 
 # 12. Unit test, Integration test, Widget test
 
