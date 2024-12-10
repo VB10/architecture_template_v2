@@ -1259,6 +1259,170 @@ That's all. You can use this cache operation for every cache model. And you can 
 
 # 12. Unit test, Integration test, Widget test
 
+Of course testing very important part of project. In general three concept is available.
+
+- Unit test - Core logic test
+- Integration test - Fully ui testing
+- Widget test - Atomic widget test
+
+Flutter directly support for these tests.So i'm using these tests for my project. Let's implement first point of unit test.
+
+-- Unit test
+I want to show unit test usage for HomeViewModel. There is main part of my project. It will show to example usage of other parts.
+This view model want to two main class for cache and network. But this is not important for unit test. I just wondering my method is working or not.
+So let's create a mock for login service and user cache.
+
+
+```dart
+/// Normal usage
+    _homeViewModel = HomeViewModel(
+      operationService: LoginService(productNetworkManager),
+      userCacheOperation: ProductStateItems.productCache.userCacheOperation,
+    );
+/// Mock usage
+    _homeViewModel = HomeViewModel(
+      operationService: LoginServiceMock(),
+      userCacheOperation: UserCacheMock(),
+    );
+```
+
+Mock is helping to test without any extra dependency. It is very useful for unit test. Let's look my mock class.
+
+```dart
+final class LoginServiceMock extends Mock implements AuthenticationOperation {
+  @override
+  Future<List<User>> users() async {
+    return [
+      User(body: 'body1', id: 1, title: 'title', userId: 1),
+      User(body: 'body2', id: 2, title: 'title2', userId: 2),
+      User(body: 'body3', id: 3, title: 'title3', userId: 3),
+    ];
+  }
+}
+
+class UserCacheMock extends Mock implements HiveCacheOperation<UserCacheModel> {
+  final List<UserCacheModel> _userCacheModel = [];
+  @override
+  void add(UserCacheModel item) {
+    _userCacheModel.add(item);
+  }
+
+  @override
+  List<UserCacheModel> getAll() {
+    return _userCacheModel;
+  }
+}
+
+```
+
+As you can see, i'm using mockito for mock. I'm going to write only some method for using my main method. Service layer will return direct mock data. The caching only work for in memory. There are no need any extra requirement. This is recuiring for package dependency etc.
+Lastly i made this project with bloc. The package has bloc_test. It is very useful for unit test. I use this package for unit test.
+
+And this is sample of same test from home_view_model_test.dart file.
+
+```dart
+group('Home View Model Test', () {
+    test('inital state is loading', () {
+      expect(homeViewModel.state.isLoading, false);
+    });
+
+    blocTest<HomeViewModel, HomeState>(
+      'fetch users',
+      build: () => homeViewModel,
+      act: (bloc) async => bloc.fetchUsers(),
+      expect: () => [
+        isA<HomeState>().having((state) => state.users, 'users', isNotEmpty),
+      ],
+    );
+```
+
+First test is validating to loading state. The second case is validating to fetch users with using bloc test. You can write many more test for looking this.
+
+- Integration test
+
+The second step of integration test. It is validating to ui. It is very useful for testing ui. I'm using integration test for home page.
+I prefer to use patrol package for integration test. It is helping to make a ui test with easy. This package has many useful feature and native support for flutter.
+You can learn about more detail integration test from [patrol](https://patrol.dev/docs/getting-started) with [flutter website.](https://docs.flutter.dev/cookbook/testing/integration/introduction)
+
+This is my home screen. Let's write a test for this.
+![alt text](image.png)
+My steps:
+
+- Wait to load home page
+- Tap to button
+- Wait to load users
+- Check to users
+
+This is my test file for this cases:
+
+```dart
+  patrolTest(
+    'Open home page and press button',
+    ($) async {
+      await app.main();
+      await $.pumpAndSettle();
+      await $(FloatingActionButton).tap();
+      await $.pumpAndSettle();
+      await $('1').waitUntilVisible();
+      $(Scrollable).containing(Text);
+      expect($('q'), findsWidgets);
+    },
+  );
+```
+
+The patrol easy to find same widget for $() function. You can write many more test for looking this.
+
+- Widget test
+This is last of part testing. It will help to test atomic widget. I'm using flutter_test for widget test. Sometimes we're writing core logic for widget. I'm going to create some widget for testable from widget test.
+
+```dart
+ await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          appBar: AppBar(
+            actions: [
+              Builder(
+                builder: (context) {
+                  return IconButton(
+                    onPressed: () {
+                      context.route
+                          .navigateToPage(const HomeDetailView(id: 'id'));
+                    },
+                    icon: const Icon(Icons.details),
+                  );
+                },
+              ),
+            ],
+          ),
+          body: HomeUserList(users: users),
+        ),
+      ),
+    );
+```
+
+I'd like to try my Home User List widget so i made it this widget. I'm creating mock data after checking if is visible.
+You can write some other atomic component for widget test. Let's write a test for this widget.
+
+```dart
+
+   /// my user list for using widget test
+        final users = [
+      User(userId: 1, body: 'body 1'),
+      User(userId: 2, body: 'body 2'),
+      User(userId: 3, body: 'body 3'),
+    ];
+
+
+  /// test steps
+    for (final item in users) {
+        expect(find.text(item.userId.toString()), findsOneWidget);
+    }
+
+    await tester.tap(find.byType(IconButton));
+    await tester.pumpAndSettle();
+    expect(find.text('Home Detail View'), findsOneWidget);
+```
+
 # 13. Pigeon, Fastlane, App Screen generator.
 
 # 14. The End
