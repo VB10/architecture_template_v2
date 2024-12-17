@@ -1272,7 +1272,6 @@ I want to show unit test usage for HomeViewModel. There is main part of my proje
 This view model want to two main class for cache and network. But this is not important for unit test. I just wondering my method is working or not.
 So let's create a mock for login service and user cache.
 
-
 ```dart
 /// Normal usage
     _homeViewModel = HomeViewModel(
@@ -1373,7 +1372,7 @@ This is my test file for this cases:
 The patrol easy to find same widget for $() function. You can write many more test for looking this.
 
 - Widget test
-This is last of part testing. It will help to test atomic widget. I'm using flutter_test for widget test. Sometimes we're writing core logic for widget. I'm going to create some widget for testable from widget test.
+  This is last of part testing. It will help to test atomic widget. I'm using flutter_test for widget test. Sometimes we're writing core logic for widget. I'm going to create some widget for testable from widget test.
 
 ```dart
  await tester.pumpWidget(
@@ -1424,5 +1423,60 @@ You can write some other atomic component for widget test. Let's write a test fo
 ```
 
 # 13. Pigeon, Fastlane, App Screen generator.
+
+At least we talked many topic for this architecture approach. I'm going to show you some other topic for this project.
+
+- Pigeon - This is helping to make a native communication between flutter and native.
+- Fastlane - This is helping to make a build and release for ios and android.
+- App Screen generator - This is helping to make a screen for ios and android.
+
+There are helping to make fix some issue for anytime. Sometimes need to communicate with native layer to ios swift and android kotlin. This package will solve your problem very easy.
+Fastlane is helping to make a build and release for ios and android. It is very useful for release.
+App Screen generator is helping to make a screen for ios and android. It is very useful for design.
+
+Lets talk about first of pigeon.
+
+This package is writing to native code by looking your dart code. It is mean you just create logic in dart side and pigeon will generate native code swift and kotlin for you. You just put it in your project and use it.
+
+You can check example from [pigeon](https://github.com/flutter/packages/tree/main/packages/pigeon/example)
+
+The other talk subject is [fastlane.](https://fastlane.tools/)
+Fastlane very greatfull solution for making CD operation locally or remotely. I've been using fastlane many year.
+You can make everyting with package from fastlane or write your own script.
+
+```ruby
+VERSION_NUMBER = "3.0.0"
+
+platform :ios do
+  before_all do
+  end
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+  enable_automatic_code_signing
+
+  increment_version_number(
+    version_number: VERSION_NUMBER
+  )
+
+  increment_build_number({
+      build_number: latest_testflight_build_number + 1
+  })
+
+    gym(scheme: "Runner",
+          xcargs: "-allowProvisioningUpdates",
+    )
+    upload_to_testflight
+  end
+end
+```
+
+As you can see, this script is very simple. Firstly i'm incrementing version number and build number. Then i'm making a build and upload to testflight.
+
+The last subject is making a screen for ios and android to play store and app store. This website is very useful for making a screen.
+
+[App Screen generator](https://studio.app-mockup.com/)
+![alt text](image-1.png)
+
+It is has a many templates for making app store screen with free. You just select a template and make a screen.
 
 # 14. The End
