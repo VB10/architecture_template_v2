@@ -40,11 +40,12 @@ final class ApplicationInitialize {
       Logger().e(details.exceptionAsString());
     };
 
+    // Dependency initialize
+    // envied
+
     _productEnvironmentWithContainer();
 
     await ProductStateItems.productCache.init();
-    // Depedency initialize
-    // envied
   }
 
   /// DO NOT CHANGE THIS METHOD

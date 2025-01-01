@@ -13,6 +13,4 @@ enum ProjectRadius {
 
   final double value;
   const ProjectRadius(this.value);
-
-  
 }
