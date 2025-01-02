@@ -1058,7 +1058,6 @@ abstract class CacheManager {
   final String? path;
 }
 
-
 ```
 
 Then let's make a hive cache manager with this base. My cache manager helping to initialize a hive database and remove a hive database.

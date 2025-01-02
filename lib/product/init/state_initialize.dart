@@ -10,8 +10,8 @@ final class StateInitialize extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<ProductViewModel>.value(
-          value: ProductStateItems.productViewModel,
+        BlocProvider<ProductViewModel>(
+          create: (context) => ProductStateItems.productViewModel,
         ),
       ],
       child: child,
